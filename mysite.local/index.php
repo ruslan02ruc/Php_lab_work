@@ -25,6 +25,43 @@ $leftMenu = [
   ['link' => 'Таблица умножения', 'href' => 'table.php'],
   ['link' => 'Калькулятор', 'href' => 'calc.php']
 ];
+function drawMenu($menu, $vertical = true)
+{
+  if ($vertical === false) {
+    echo '<style type="text/css">
+      #content
+      {
+        padding-top: 130px;
+        margin-left: 2em;
+      } 
+      #nav{
+        width: 1400px;
+      } 
+      #nav li{
+        margin-right: 50px;
+      }
+      #nav ul{
+        display: inline-flex;
+        padding-left: 350px; 
+      }
+      #nav h2{
+        text-align: center;
+      }
+      
+    </style>';
+    echo '<ul>';
+    foreach ($menu as $key => $value) {
+      echo '<li><a href=' . $menu[$key]['href'] . '>' . $menu[$key]['link'] . '</a></li>';
+    }
+    echo "</ul>";
+  } else {
+    echo "<ul>";
+    foreach ($menu as $key => $value) {
+      echo '<li><a href=' . $menu[$key]['href'] . '>' . $menu[$key]['link'] . '</a></li>';
+    }
+    echo "</ul>";
+  }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -69,11 +106,9 @@ $leftMenu = [
     <!-- Навигация -->
     <h2>Навигация по сайту</h2>
     <!-- Меню -->
-    <ul>
-      <?php foreach ($leftMenu as $key => $value) { ?>
-        <li><a href='<?= $leftMenu[$key]['href'] ?>'><?= $leftMenu[$key]['link'] ?></a></li>
-      <?php } ?>
-    </ul>
+    <?php
+    drawMenu($leftMenu, false);
+    ?>
     <!-- Меню -->
     <!-- Навигация -->
   </div>

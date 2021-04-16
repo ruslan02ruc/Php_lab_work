@@ -1,6 +1,20 @@
 <?php
-$cols = 18;
-$rows = 15;
+function drawTable($cols, $rows, $color)
+{
+  echo '<table border="1">';
+  for ($tr = 1; $tr <= $rows; $tr++) {
+    echo '<tr>';
+    for ($td = 1; $td <= $cols; $td++) {
+      if ($tr === 1 || $td === 1) {
+        echo '<th align="center" style="color:black;background-color:#07db83;">' . '<b>' . $tr * $td . '</b>' . '</th>';
+      } else {
+        echo '<td style="color:black;background-color:' . $color . ';">' . $tr * $td . '</td>';
+      }
+    }
+    echo '</tr>';
+  }
+  echo '</table>';
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -43,19 +57,7 @@ $rows = 15;
     </form>
     <!-- Таблица -->
     <?php
-    echo '<table border="1">';
-    for ($tr = 1; $tr <= $rows; $tr++) {
-      echo '<tr>';
-      for ($td = 1; $td <= $cols; $td++) {
-        if ($tr === 1 || $td === 1) {
-          echo '<th align="center" style="color:black;background-color:#07db83;">' . '<b>' . $tr * $td . '</b>' . '</th>';
-        } else {
-          echo '<td style="color:black;background-color:#7ecefcf4;">' . $tr * $td . '</td>';
-        }
-      }
-      echo '</tr>';
-    }
-    echo '</table>';
+    drawTable(18, 15, '#7ecefcf4')
     ?>
     <!-- Таблица -->
     <!-- Область основного контента -->
