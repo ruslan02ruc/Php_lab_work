@@ -1,6 +1,17 @@
 <?php
-include('inc/lib.inc.php');
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $cols = abs((int) $_POST['cols']);
+  $rows = abs((int) $_POST['rows']);
+  $color = trim(strip_tags($_POST['color']));
+
+  $arr = array($cols, $rows, $color);
+  $_SESSION['arr'] = $arr;
+}
+$cols = ($cols) ? $cols : 10;
+$rows = ($rows) ? $rows : 10;
+$color = ($color) ? $color : 'yellow';
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -11,64 +22,29 @@ include('inc/lib.inc.php');
 </head>
 
 <body>
-
-  <div id="header">
-    <!-- Верхняя часть страницы -->
-    <img src="logo.gif" width="187" height="29" alt="Наш логотип" class="logo" />
-    <span class="slogan">приходите к нам учиться</span>
-    <!-- Верхняя часть страницы -->
-  </div>
-
-  <div id="content">
-    <!-- Заголовок -->
-    <h1>Таблица умножения</h1>
-    <!-- Заголовок -->
-    <!-- Область основного контента -->
-    <form action=''>
-      <label>Количество колонок: </label>
-      <br />
-      <input name='cols' type='text' value="" />
-      <br />
-      <label>Количество строк: </label>
-      <br />
-      <input name='rows' type='text' value="" />
-      <br />
-      <label>Цвет: </label>
-      <br />
-      <input name='color' type='text' value="" />
-      <br />
-      <br />
-      <input type='submit' value='Создать' />
-    </form>
-    <!-- Таблица -->
-    <?php
-    drawTable(18, 15, '#7ecefcf4')
-    ?>
-    <!-- Таблица -->
-    <!-- Область основного контента -->
-  </div>
-  <div id="nav">
-    <h2>Навигация по сайту</h2>
-    <!-- Меню -->
-    <ul>
-      <li><a href='index.php'>Домой</a>
-      </li>
-      <li><a href='about.php'>О нас</a>
-      </li>
-      <li><a href='contact.php'>Контакты</a>
-      </li>
-      <li><a href='table.php'>Таблица умножения</a>
-      </li>
-      <li><a href='calc.php'>Калькулятор</a>
-      </li>
-    </ul>
-    <!-- Меню -->
-  </div>
-  <div id="footer">
-    <!-- Нижняя часть страницы -->
-    &copy; Супер Мега Веб-мастер, 2000 &ndash; 2021
-    <!-- Нижняя часть страницы -->
-  </div>
+  <!-- Область основного контента -->
+  <form action=<?= $_SERVER['REQUEST_URI'] ?> method='POST'>
+    <label>Количество колонок: </label>
+    <br />
+    <input name='cols' type='text' value="<?= $_SESSION['arr'][0]; ?> " />
+    <br />
+    <label>Количество строк: </label>
+    <br />
+    <input name='rows' type='text' value="<?= $_SESSION['arr'][1]; ?>" />
+    <br />
+    <label>Цвет: </label>
+    <br />
+    <input name='color' type='text' value="<?= $_SESSION['arr'][2]; ?>" />
+    <br />
+    <br />
+    <input type='submit' value='Создать' />
+  </form>
+  <!-- Таблица -->
+  <?php
+  drawTable($cols, $rows, $color);
+  ?>
+  <!-- Таблица -->
+  <!-- Область основного контента -->
 </body>
 
 </html>
