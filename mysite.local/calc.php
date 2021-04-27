@@ -1,3 +1,37 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+  $num1 = $_POST['num1'];
+  $num2 = $_POST['num2'];
+  $operator = $_POST['operator'];
+
+  switch ($operator) {
+    case '+':
+      $result = $num1 + $num2;
+      break;
+    case '-':
+      $result = $num1 - $num2;
+      break;
+    case '*':
+      $result = $num1 * $num2;
+      break;
+    case '/':
+      if ($num2 == '0')
+        $error_result = "На ноль делить нельзя!";
+      else
+        $result = $num1 / $num2;
+      break;
+    default:
+      $error_result = 'Неверный оператор';
+      break;
+  }
+  if (isset($error_result)) {
+    echo "<div style='color: red;'>Ошибка: $error_result</div>";
+  } else {
+    echo "<div >Ответ: $result</div>";
+  }
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -9,7 +43,7 @@
 
 <body>
   <!-- Область основного контента -->
-  <form action=''>
+  <form action=<?= $_SERVER['REQUEST_URI'] ?> method='POST'>
     <label>Число 1:</label>
     <br />
     <input name='num1' type='text' />
