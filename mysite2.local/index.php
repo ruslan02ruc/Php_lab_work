@@ -8,7 +8,8 @@ if ($visitCounter === 0) {
   echo '<br>';
   echo "Последнее посещение:  " . $lastVisit;
 }
-
+define('PATH_LOG', 'path.log');
+include 'inc/log.inc.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -54,6 +55,7 @@ if ($visitCounter === 0) {
       </li>
       <li><a href='index.php?id=gbook'>Гостевая книга</a>
       </li>
+      <li><a href='index.php?id=log'>Журнал посещений</a></li>
     </ul>
     <!-- Навигация -->
   </div>

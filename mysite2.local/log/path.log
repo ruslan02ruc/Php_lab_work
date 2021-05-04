@@ -1,0 +1,6 @@
+1620123778|/Php_lab_work/mysite2.local/index.php|http://php:81/Php_lab_work/mysite2.local/index.php?id=log
+1620123779|/Php_lab_work/mysite2.local/index.php?id=log|http://php:81/Php_lab_work/mysite2.local/index.php
+1620123781|/Php_lab_work/mysite2.local/index.php?id=about|http://php:81/Php_lab_work/mysite2.local/index.php?id=log
+1620123782|/Php_lab_work/mysite2.local/index.php?id=contact|http://php:81/Php_lab_work/mysite2.local/index.php?id=about
+1620123783|/Php_lab_work/mysite2.local/index.php?id=gbook|http://php:81/Php_lab_work/mysite2.local/index.php?id=contact
+1620123783|/Php_lab_work/mysite2.local/index.php?id=log|http://php:81/Php_lab_work/mysite2.local/index.php?id=gbook
